@@ -40,22 +40,30 @@ const displayPhone = phones => {
           </div>
        `
        phoneContainer.appendChild(phoneCard)
-
     })
+    toggleLoadingSpinner(false);
 }
 
 const handleSearch = () =>{
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
-    // console.log(searchText);
     loadPhone(searchText);
 }
 
 const handleSearch2 = () =>{
+    toggleLoadingSpinner(true);
     const searchField = document.getElementById('search-field2');
     const searchText = searchField.value;
     loadPhone(searchText);
-
+}
+const toggleLoadingSpinner = (isLoading) =>{
+    const loadingSpinner = document.getElementById('loading-spinner');
+    if(isLoading){
+        loadingSpinner.classList.remove('hidden');
+    }
+    else {
+        loadingSpinner.classList.add('hidden');
+    }
 }
 
 // loadPhone();
