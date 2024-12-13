@@ -5,7 +5,7 @@
     <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
           name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.19/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.19/dist/full.min.css" rel="stylesheet" type="text/css"/>
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
@@ -15,26 +15,41 @@
 </header>
 <main class="container mx-auto mt-8">
     <section class="bg-gray-100 p-4 m-4">
-        <input type="text" id="search-field" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+        <label for="search-field"></label><input class="input input-bordered w-full max-w-xs" id="search-field" placeholder="Type here" type="text"/>
         <button class="btn btn-neutral" onclick="handleSearch()">Search</button>
 
-        <input type="text" id="search-field2" placeholder="Search here..." class="input input-bordered w-full max-w-xs" />
-        <button class="btn btn-neutral" onclick="handleSearch2()">Search</button>
+        <!--        <input type="text" id="search-field2" placeholder="Search here..." class="input input-bordered w-full max-w-xs" />-->
+        <!--        <button class="btn btn-neutral" onclick="handleSearch2()">Search</button>-->
     </section>
 
-<!--    spinner or loader -->
+    <!--    spinner or loader -->
     <div class="text-center my-40 hidden" id="loading-spinner">
         <span class="loading loading-spinner loading-lg text-white-400"></span>
     </div>
 
     <!--    Search result-->
     <section>
-        <div id="phone-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="phone-container">
         </div>
-        <div id="show-all-container" class="hidden">
+        <div class="hidden text-center my-8" id="show-all-container">
             <button class="btn btn-white mt-4">Show All</button>
         </div>
     </section>
+
+    <!-- Open the modal using ID.showModal() method -->
+    <button class="btn" onclick="my_modal_5.showModal()">open modal</button>
+    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+            <h3 class="text-lg font-bold">Hello!</h3>
+            <p class="py-4">Press ESC key or click the button below to close</p>
+            <div class="modal-action">
+                <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
 </main>
 <footer>
 
