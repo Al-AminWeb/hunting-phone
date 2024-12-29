@@ -1,9 +1,16 @@
-/** @type {import('tailwindcss').Config} */
+// tailwind.config.js
 module.exports = {
-  content: [],
-  theme: {
-    extend: {},
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          primary: "#4CAF50",
+          secondary: "#FF9800",
+          accent: "#607D8B",
+          neutral: "#3D4451",
+          "base-100": "#FFFFFF",
+        },
+      },
+    ],
   },
-  plugins: [],
-}
-
+};

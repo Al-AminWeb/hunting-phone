@@ -1,4 +1,4 @@
-const loadPhone = async (searchText) => {
+const loadPhone = async (searchText = '13') => {
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await res.json()
     const phones = data.data;
@@ -34,7 +34,7 @@ const displayPhone = phones => {
               <h2 class="card-title">${phone.phone_name}</h2>
               <p>If a dog chews shoes whose shoes does he choose?</p>
               <div class="card-actions justify-center">
-                  <button onclick="handleShowClick('${phone.slug}')" class="btn btn-primary">Show Details</button>
+                  <button onclick="handleShowClick('${phone.slug}') " class="btn btn-primary">Show Details</button>
               </div>
           </div>
        `
@@ -43,11 +43,32 @@ const displayPhone = phones => {
     toggleLoadingSpinner(false);
 }
 
-const handleShowClick = async (id) =>{
-    console.log("show click",id);
+const handleShowClick = async (id) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
     const data = await res.json()
-        console.log(data);
+
+    const phone = data.data;
+    showPhoneDetails(phone);
+}
+
+const showPhoneDetails = (phone) => {
+    // console.log(phone);
+    const phoneName = document.getElementById('show-detail-phone-name')
+    phoneName.innerText = phone.name;
+
+    const showDetailContainer = document.getElementById('show-detail-container');
+    
+    showDetailContainer.innerHTML = `
+        <img src="${phone.image}" alt=""/>
+        <p><span>Storage:</span>${phone.mainFeatures?.storage}</p>
+        <p><span>Display Size:</span>${phone?.mainFeatures?.displaySize}</p>
+        <p><span>Chip set:</span>${phone?.mainFeatures?.chipSet}</p>
+        
+    
+    `
+    
+    // show the modals
+    show_details_modal.showModal()
 }
 
 const handleSearch = () => {
@@ -57,12 +78,7 @@ const handleSearch = () => {
     loadPhone(searchText);
 }
 
-// const handleSearch2 = () =>{
-//     toggleLoadingSpinner(true);
-//     const searchField = document.getElementById('search-field2');
-//     const searchText = searchField.value;
-//     loadPhone(searchText);
-// }
+
 const toggleLoadingSpinner = (isLoading) => {
     const loadingSpinner = document.getElementById('loading-spinner');
     if (isLoading) {
@@ -72,4 +88,4 @@ const toggleLoadingSpinner = (isLoading) => {
     }
 }
 
-// loadPhone();
+loadPhone();
